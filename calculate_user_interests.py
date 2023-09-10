@@ -76,7 +76,3 @@ def calculate_user_interests(date, depth, spark):
 		result = like_tops\
 		.join(dislike_tops, "user_id", "full_outer").join(tag_tops, "user_id", "full_outer")
 		return result
-		
-
- 
-	

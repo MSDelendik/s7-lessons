@@ -14,12 +14,15 @@ def main():
         sql = SQLContext(sc)
 
  # Напишите директорию чтения в общем виде
-        events = sql.read....
+        events = sql.read.json(f"{base_input_path}/date={date}")
 
 # Напишите директорию записи
         events\
         .write\
-        ...
+        .partitionBy('event_type') \
+        .mode("overwrite") \
+        .format('parquet') \
+        .save(f"{base_output_path}/date={date}")
 
 
 if __name__ == "__main__":
